@@ -3,11 +3,23 @@ node {
         git "https://github.com/Adamshafi007/FlightBooking.git"
     }
     stage ('Build'){
-        dir("comtest") {
-            sh "mvn clean install"
+        dir("src") {
+            sh "mvn clean test"
         }
         dir("comtest/target") {
             sh "java -jar com.test-1.0-SNAPSHOT.jar"
         }
+    }
+    stage('Generate HTML report') {
+        cucumber buildStatus: 'UNSTABLE',
+                reportTitle: 'My report',
+                fileIncludePattern: '**/*.json',
+                trendsLimit: 10,
+                classifications: [
+                        [
+                                'key': 'Browser',
+                                'value': 'Firefox'
+                        ]
+                ]
     }
 }
