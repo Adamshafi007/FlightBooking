@@ -1,0 +1,5 @@
+Pages\BaseFlight.class
+Pages\AllFlightsPage.class
+Pages\WelcomePage.class
+Pages\UserDetailsPage.class
+Pages\FlightConfirmationPage.class

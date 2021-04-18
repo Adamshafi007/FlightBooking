@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="22.55">
+<testcase classname="This feature will validate flight booking" name="Verify flight booking for users" time="21.768">
+<system-out><![CDATA[Given User navigates to flight booking application..........................passed
+When user selects "Paris" and "Rome" city and click on Find Flights button..passed
+And user choose flight to reserve ticket....................................passed
+And user enters all passenger details and clicks on Purchase Flight button..passed
+Then user validates purchase details........................................passed
+]]></system-out>
+</testcase>
+</testsuite>
