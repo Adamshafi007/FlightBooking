@@ -3,7 +3,7 @@ node {
         git "https://github.com/Adamshafi007/FlightBooking.git"
     }
     stage ('Build'){
-        dir("comtest") {
+        dir("src") {
             sh "mvn clean test"
         }
         dir("comtest/target") {
