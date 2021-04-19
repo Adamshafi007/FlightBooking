@@ -31,4 +31,13 @@ node {
                         ]
                 ]
     }
+
+    post {
+        always {
+            script {
+                if (currentBuild.currentResult == 'SUCCESS') {
+                    step([$class: 'Mailer', notifyEveryUnstableBuild: true, recipients: "sdmdwd1710@gmail.com, sendToIndividuals: true])
+                }
+            }
+        }
 }
