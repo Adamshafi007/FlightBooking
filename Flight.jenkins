@@ -3,7 +3,7 @@ node {
         git "https://github.com/Adamshafi007/FlightBooking.git"
     }
     stage ('Build'){
-        dir("FlightBooking") {
+        dir("FlightCucumberProject") {
             bat 'mvn clean test'
         }
         dir("FlightBooking/target") {
