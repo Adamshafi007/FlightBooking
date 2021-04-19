@@ -4,10 +4,10 @@ node {
     }
     stage ('Build'){
         dir("C:\\Users\\Admin\\.jenkins\\workspace\\FlightCucumberProject\\FlightBooking") {
-            sh "mvn clean test"
+            sh 'mvn clean test'
         }
         dir("FlightBooking/target") {
-            sh "java -jar com.test-1.0-SNAPSHOT.jar"
+            sh 'java -jar com.test-1.0-SNAPSHOT.jar'
         }
     }
     stage('Generate HTML report') {
