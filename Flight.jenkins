@@ -3,7 +3,7 @@ node {
         git "https://github.com/Adamshafi007/FlightBooking.git"
     }
     stage ('Build'){
-        dir("D:\\Git\\usr\\bin") {
+        dir("D:\\Git\\usr\\bin\\nohup.exe") {
             sh 'mvn clean test'
         }
         dir("FlightBooking/target") {
