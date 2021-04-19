@@ -32,13 +32,8 @@ node {
                 ]
     }
     stage('Send Email notification'){
-        emailext(
-                to: 'sdmdwd1710@gmail.com',
-                body: '${env.BUILD_URL} has result ${currentBuild.result}',
-                mimeType: 'text/html',
-                subject: 'PipeLine Job competed',
-                replyTo: '$DEFAULT_REPLYTO'
-        )
+        emailext attachmentsPattern: 'file:///C:/Users/Admin/.jenkins/jobs/FlightCucumberProject/builds/34/cucumber-html-reports_fb242bb7-17b2-346f-b0a4-d7a3b25b65b4/overview-features.html',
+                body: 'Find attachments', subject: 'test', to: 'test@me.org'
     }
 
 }
