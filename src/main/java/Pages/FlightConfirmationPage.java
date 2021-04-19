@@ -11,8 +11,8 @@ public class FlightConfirmationPage extends BaseFlight {
     @FindBy(xpath="//td[text()='Status']//following-sibling::td")
     WebElement status;
 
-    @FindBy(name="")
-    WebElement username2;
+    @FindBy(xpath="//h1[text()='Thank you for your purchase today!']")
+    WebElement thankuMsg;
 
     //here all able are initialized with driver, internally these webelements will be converted into driver.findElements
     public FlightConfirmationPage(){
@@ -25,5 +25,10 @@ public class FlightConfirmationPage extends BaseFlight {
     public String getPurchaseID(){
         String pid=purchaseID.getText();
         return pid;
+    }
+
+    public String getThankuMsg(){
+        String msg=thankuMsg.getText();
+        return msg;
     }
 }

@@ -12,8 +12,12 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+
+import java.util.Arrays;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class FlightStepDefs extends BaseFlight{
@@ -59,20 +63,22 @@ public class FlightStepDefs extends BaseFlight{
         Assert.assertEquals("valid page title","BlazeDemo",title);
     }
 
-    @When("user selects {string} and {string} city and click on Find Flights button")
+    @When("user selects {string} and {string} city")
     public void userFromAndToCity(String departure, String destination) {
         System.out.println("depp=="+departure+"desss=="+destination);
         welcomePage.selectDepartureCity(departure);
         welcomePage.selectDestinationCity(destination);
+    }
+    @And("click on Find Flights button")
+    public void clickOnFindFlightsButton() {
         welcomePage.clickFindFlights();
     }
-
     @And("user choose flight to reserve ticket")
     public void userChooseFlightToReserveTicket() {
         allFlightsPage.clickChooseThisFlightButton();
     }
 
-    @And("user enters all passenger details and clicks on Purchase Flight button")
+    @And("user enters all passenger details")
     public void userEntersAllPassengerDetailsAndClicksOnPurchaseFlightButton() {
         userDetailsPage.enterFirstName("Adamshafi");
         userDetailsPage.enterAddress("123 street");
@@ -83,6 +89,10 @@ public class FlightStepDefs extends BaseFlight{
         userDetailsPage.enterZipCode("12344");
         userDetailsPage.enterNameOnCard("Shafi");
         userDetailsPage.enterState("Karnataka");
+    }
+
+    @And("clicks on Purchase Flight button")
+    public void clicksOnPurchaseFlightButton() {
         userDetailsPage.clickPurchaseFlight();
     }
 
@@ -90,5 +100,37 @@ public class FlightStepDefs extends BaseFlight{
     public void userValidatesPurchaseDetails() {
         String pid=flightConfirmationPage.getPurchaseID();
         Assert.assertTrue("purchase ID generated= "+pid,pid!=null);
+        String msg=flightConfirmationPage.getThankuMsg();
+        String expectedMsg="Thank you for your purchase today!";
+        Assert.assertTrue("Msg is valid",msg.equalsIgnoreCase(expectedMsg));
+
+    }
+
+    @Then("User validates {string} and {string} cities available")
+    public void userValidatesAndCitiesAvailable(String fromCiti, String toCity) {
+        List<String> fromOptions=welcomePage.getAllOptionsFrom();
+        String[] optionsFrom= fromCiti.split(",");
+        for (String option:optionsFrom) {
+            if(fromOptions.contains(option)){
+                Assert.assertTrue("all options available",true);
+            }
+            else Assert.assertTrue(option+" options NOT available",false);
+        }
+        List<String> toOptions=welcomePage.getAllOptionsTo();
+        String[] optionsTo= toCity.split(",");
+        for (String option:optionsTo) {
+            if(toOptions.contains(option)){
+                Assert.assertTrue("all options available",true);
+            }
+            else Assert.assertTrue(option+" options NOT available",false);
+        }
+    }
+
+
+    @Then("user validates flight header message {string} and {string} city")
+    public void userValidatesFlightHeaderMessageAndCity(String departure, String destination) {
+        String msg=welcomePage.getFlightHeaderMsg();
+        Assert.assertTrue("valid msg is displayed",msg.contains(departure));
+        Assert.assertTrue("valid msg is displayed",msg.contains(destination));
     }
 }
