@@ -4,10 +4,10 @@ node {
     }
     stage ('Build'){
         dir("D:\\Git\\usr\\bin\\nohup.exe") {
-            sh 'mvn clean test'
+            bat 'mvn clean test'
         }
         dir("FlightBooking/target") {
-            sh 'java -jar com.test-1.0-SNAPSHOT.jar'
+            bat 'java -jar com.test-1.0-SNAPSHOT.jar'
         }
     }
     stage('Generate HTML report') {
