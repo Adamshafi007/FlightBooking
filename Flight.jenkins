@@ -6,9 +6,6 @@ node {
         dir("C:\\Users\\Admin\\.jenkins\\workspace\\FlightCucumberProject") {
             bat 'mvn clean test'
         }
-        dir("FlightBooking/target") {
-            bat 'java -jar com.test-1.0-SNAPSHOT.jar'
-        }
     }
     stage('Generate HTML report') {
         cucumber buildStatus: 'UNSTABLE',
