@@ -3,10 +3,10 @@ node {
         git "https://github.com/Adamshafi007/FlightBooking.git"
     }
     stage ('Build'){
-        dir("src") {
+        dir("FlightBooking") {
             sh "mvn clean test"
         }
-        dir("comtest/target") {
+        dir("FlightBooking/target") {
             sh "java -jar com.test-1.0-SNAPSHOT.jar"
         }
     }
