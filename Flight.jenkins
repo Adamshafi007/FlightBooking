@@ -34,7 +34,7 @@ node {
     stage('Send Email notification'){
         emailext(
                 to: 'sdmdwd1710@gmail.com',
-                body: '${DEFAULT_CONTENT}',
+                body: '${env.BUILD_URL} has result ${currentBuild.result}',
                 mimeType: 'text/html',
                 subject: 'PipeLine Job competed',
                 replyTo: '$DEFAULT_REPLYTO'
