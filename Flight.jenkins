@@ -2,9 +2,21 @@ node {
     stage ('SCM checkout'){
         git "https://github.com/Adamshafi007/FlightBooking.git"
     }
-    stage ('Build'){
+    stage ('CleanUp'){
         dir("C:\\Users\\Admin\\.jenkins\\workspace\\FlightCucumberProject") {
-            bat 'mvn clean test'
+            bat 'mvn clean'
+        }
+    }
+
+    stage ('Compile scripts'){
+        dir("C:\\Users\\Admin\\.jenkins\\workspace\\FlightCucumberProject") {
+            bat 'mvn compile'
+        }
+    }
+
+    stage ('Execute Scripts'){
+        dir("C:\\Users\\Admin\\.jenkins\\workspace\\FlightCucumberProject") {
+            bat 'mvn test'
         }
     }
     stage('Generate HTML report') {
