@@ -4,7 +4,7 @@ pipeline {
         stage('Testing') {
             steps{
                 bat "del test.zip"
-                zip zipFile: 'test.zip', archive: false, dir: 'C:\\Users\\Admin\\.jenkins\\workspace\\FlightCucumberProject\\target'
+                zip zipFile: 'test.zip', archive: false, dir: 'C:\\Users\\Admin\\.jenkins\\workspace\\FlightCucumberProject\\target\\Destination'
             }
         }
     }
