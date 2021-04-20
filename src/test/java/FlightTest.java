@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features"
         ,glue={"stepDefinitions"},
         tags="@Sanity",
-        plugin = { "pretty", "html:target/Destination/cucumber.html",
+        plugin = { "pretty", "html:target/CucumberReport/cucumber.html",
                     "json:target/Destination/cucumber.json",
                     "junit:target/Destination/cucumber.xml",
         },
