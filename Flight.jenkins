@@ -33,7 +33,7 @@ node {
     }
     stage('Zip') {
             bat 'del target.zip'
-            zip zipFile: 'target.zip', archive: false, dir:"C:\\Users\\Admin\\.jenkins\\workspace\\FlightCucumberProject\\target"
+            zip zipFile: 'target.zip', archive: false, dir:'C:\\Users\\Admin\\.jenkins\\workspace\\FlightCucumberProject\\target'
     }
 
     stage('Email') {
