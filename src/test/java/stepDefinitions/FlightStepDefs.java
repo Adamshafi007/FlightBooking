@@ -80,7 +80,7 @@ public class FlightStepDefs extends BaseFlight{
 
     @And("user enters all passenger details")
     public void userEntersAllPassengerDetailsAndClicksOnPurchaseFlightButton() {
-        userDetailsPage.enterFirstName("Adamshafi");
+       // userDetailsPage.enterFirstName("Adamshafi");
         userDetailsPage.enterAddress("123 street");
         userDetailsPage.enterCity("Bangalore");
         userDetailsPage.enterCCNumber("12345");
