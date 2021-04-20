@@ -5,7 +5,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class UserDetailsPage extends BaseFlight {
-    @FindBy(name="inputName")
+    @FindBy(id="inputName")
     WebElement firstName;
 
     @FindBy(id="address")
