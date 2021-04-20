@@ -7,7 +7,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = "src/test/resources/features"
         ,glue={"stepDefinitions"},
-        tags="@Sanityx",
+        tags="@Sanity",
         plugin = { "pretty", "html:target/Destination/cucumber.html",
                     "json:target/Destination/cucumber.json",
                     "junit:target/Destination/cucumber.xml",
