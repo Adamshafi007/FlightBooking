@@ -2,36 +2,46 @@ pipeline {
     agent any
     stages {
         stage ('SCM checkout'){
-            git "https://github.com/Adamshafi007/FlightBooking.git"
+            steps {
+                git "https://github.com/Adamshafi007/FlightBooking.git"
+            }
         }
         stage ('CleanUp'){
-            dir("C:\\Users\\Admin\\.jenkins\\workspace\\FlightCucumberProject") {
-                bat 'mvn clean'
+            steps {
+                dir("C:\\Users\\Admin\\.jenkins\\workspace\\FlightCucumberProject") {
+                    bat 'mvn clean'
+                }
             }
         }
 
         stage ('Compile scripts'){
-            dir("C:\\Users\\Admin\\.jenkins\\workspace\\FlightCucumberProject") {
-                bat 'mvn compile'
+            steps {
+                dir("C:\\Users\\Admin\\.jenkins\\workspace\\FlightCucumberProject") {
+                    bat 'mvn compile'
+                }
             }
         }
 
         stage ('Execute Scripts'){
-            dir("C:\\Users\\Admin\\.jenkins\\workspace\\FlightCucumberProject") {
-                bat 'mvn test'
+            steps {
+                dir("C:\\Users\\Admin\\.jenkins\\workspace\\FlightCucumberProject") {
+                    bat 'mvn test'
+                }
             }
         }
         stage('Generate HTML report') {
-            cucumber buildStatus: 'UNSTABLE',
-                    reportTitle: 'My report',
-                    fileIncludePattern: '**/*.json',
-                    trendsLimit: 10,
-                    classifications: [
-                            [
-                                    'key': 'Browser',
-                                    'value': 'Firefox'
-                            ]
-                    ]
+            steps {
+                cucumber buildStatus: 'UNSTABLE',
+                        reportTitle: 'My report',
+                        fileIncludePattern: '**/*.json',
+                        trendsLimit: 10,
+                        classifications: [
+                                [
+                                        'key'  : 'Browser',
+                                        'value': 'Firefox'
+                                ]
+                        ]
+            }
         }
         stage('Archive report') {
             steps{
