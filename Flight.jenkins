@@ -62,7 +62,7 @@ pipeline {
                     mimeType: 'text/html',to: "sdmdwd1710@gmail.com"
         }
         unstable{
-            mailext attachmentsPattern: 'report.zip', body: '''${SCRIPT, template="groovy-html.template"}''',
+            emailext attachmentsPattern: 'report.zip', body: '''${SCRIPT, template="groovy-html.template"}''',
                     subject: "${env.JOB_NAME} - Build # ${env.BUILD_NUMBER} - Unstable",
                     mimeType: 'text/html',to: "sdmdwd1710@gmail.com"
         }
