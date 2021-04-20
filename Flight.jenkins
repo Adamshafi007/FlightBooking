@@ -31,9 +31,23 @@ node {
                         ]
                 ]
     }
-    stage('Send Email notification'){
-        emailext (to: 'sdmdwd1710@gmail.com', replyTo: 'abc@gmail.com', subject: "Email Report from - '${env.JOB_NAME}' ",
-                body: readFile("target/Destination/cucumber.html"), mimeType: 'text/html')
+    stage('Testing') {
+        steps{
+            bat "del testReport.zip"
+            zip zipFile: 'testReport.zip', archive: false, dir: 'C:\\Users\\Admin\\.jenkins\\workspace\\FlightCucumberProject\\target\\Destination'
+        }
     }
 
+    post {
+        failure {
+            emailext attachmentsPattern: 'testReport.zip', body: '''${SCRIPT, template="groovy-html.template"}''',
+                    subject: "${env.JOB_NAME} - Build # ${env.BUILD_NUMBER} - Failed",
+                    mimeType: 'text/html',to: "sdmdwd1710@gmail.com"
+        }
+        success {
+            emailext attachmentsPattern: 'testReport.zip', body: '''${SCRIPT, template="groovy-html.template"}''',
+                    subject: "${env.JOB_NAME} - Build # ${env.BUILD_NUMBER} - Successful",
+                    mimeType: 'text/html',to: "sdmdwd1710@gmail.com"
+        }
+    }
 }
