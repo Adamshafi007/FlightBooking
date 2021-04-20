@@ -8,7 +8,7 @@ public class UserDetailsPage extends BaseFlight {
     @FindBy(id="inputName")
     WebElement firstName;
 
-    @FindBy(id="address")
+    @FindBy(name="address")
     WebElement address;
 
     @FindBy(name="city")
