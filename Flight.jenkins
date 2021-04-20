@@ -1,50 +1,23 @@
-node {
-    stage ('SCM checkout'){
-        git "https://github.com/Adamshafi007/FlightBooking.git"
-    }
-    stage ('CleanUp'){
-        dir("C:\\Users\\Admin\\.jenkins\\workspace\\FlightCucumberProject") {
-            bat 'mvn clean'
+pipeline {
+    agent any
+    stages {
+        stage('Testing') {
+            steps{
+                bat "del test.zip"
+                zip zipFile: 'test.zip', archive: false, dir: 'C:\\Users\\Admin\\.jenkins\\workspace\\FlightCucumberProject\\target'
+            }
         }
     }
-
-    stage ('Compile scripts'){
-        dir("C:\\Users\\Admin\\.jenkins\\workspace\\FlightCucumberProject") {
-            bat 'mvn compile'
-        }
-    }
-
-    stage ('Execute Scripts'){
-        dir("C:\\Users\\Admin\\.jenkins\\workspace\\FlightCucumberProject") {
-            bat 'mvn test'
-        }
-    }
-    stage('Generate HTML report') {
-        cucumber buildStatus: 'UNSTABLE',
-                reportTitle: 'My report',
-                fileIncludePattern: '**/*.json',
-                trendsLimit: 10,
-                classifications: [
-                        [
-                                'key': 'Browser',
-                                'value': 'Firefox'
-                        ]
-                ]
-    }
-    stage('Zip') {
-            zip zipFile: 'target.zip', archive: false, dir:'C:\\Users\\Admin\\.jenkins\\workspace\\FlightCucumberProject\\target'
-    }
-
-    stage('Email') {
+    post {
         failure {
-            emailext attachmentsPattern: 'target.zip', body: '''${SCRIPT, template="groovy-html.template"}''',
+            emailext attachmentsPattern: 'test.zip', body: '''${SCRIPT, template="groovy-html.template"}''',
                     subject: "${env.JOB_NAME} - Build # ${env.BUILD_NUMBER} - Failed",
-                    mimeType: 'text/html',to: "sdmdwd1710@gmail.com"
+                    mimeType: 'text/html',to: "email id"
         }
         success {
-            emailext attachmentsPattern: 'target.zip', body: '''${SCRIPT, template="groovy-html.template"}''',
+            emailext attachmentsPattern: 'test.zip', body: '''${SCRIPT, template="groovy-html.template"}''',
                     subject: "${env.JOB_NAME} - Build # ${env.BUILD_NUMBER} - Successful",
-                    mimeType: 'text/html',to: "sdmdwd1710@gmail.com"
+                    mimeType: 'text/html',to: "email id"
         }
     }
 }
