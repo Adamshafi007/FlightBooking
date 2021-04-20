@@ -14,7 +14,7 @@ Feature: This feature will validate flight booking
       | Paris       | Rome        |
       | Boston      | Berlin      |
 
-  @Sanity
+  @Sanityx
   Scenario Outline: Verify departure and destination dropdowns have all expected cities
     Given User navigates to flight booking application
     Then User validates "<departure>" and "<destination>" cities available
