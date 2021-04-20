@@ -9,8 +9,8 @@ import org.junit.runner.RunWith;
         ,glue={"stepDefinitions"},
         tags="@Sanity",
         plugin = { "pretty", "html:target/CucumberReport/cucumber.html",
-                    "json:target/Destination/cucumber.json",
-                    "junit:target/Destination/cucumber.xml",
+                    "json:target/CucumberReport/cucumber.json",
+                    "junit:target/CucumberReport/cucumber.xml",
         },
         monochrome = true
 )
