@@ -1,10 +1,42 @@
 pipeline {
     agent any
     stages {
-        stage('Testing') {
+        stage ('SCM checkout'){
+            git "https://github.com/Adamshafi007/FlightBooking.git"
+        }
+        stage ('CleanUp'){
+            dir("C:\\Users\\Admin\\.jenkins\\workspace\\FlightCucumberProject") {
+                bat 'mvn clean'
+            }
+        }
+
+        stage ('Compile scripts'){
+            dir("C:\\Users\\Admin\\.jenkins\\workspace\\FlightCucumberProject") {
+                bat 'mvn compile'
+            }
+        }
+
+        stage ('Execute Scripts'){
+            dir("C:\\Users\\Admin\\.jenkins\\workspace\\FlightCucumberProject") {
+                bat 'mvn test'
+            }
+        }
+        stage('Generate HTML report') {
+            cucumber buildStatus: 'UNSTABLE',
+                    reportTitle: 'My report',
+                    fileIncludePattern: '**/*.json',
+                    trendsLimit: 10,
+                    classifications: [
+                            [
+                                    'key': 'Browser',
+                                    'value': 'Firefox'
+                            ]
+                    ]
+        }
+        stage('Archive report') {
             steps{
-                bat "del test.zip"
-                zip zipFile: 'test.zip', archive: false, dir: 'C:\\Users\\Admin\\.jenkins\\workspace\\FlightCucumberProject\\target\\Destination'
+                bat "del report.zip"
+                zip zipFile: 'report.zip', archive: false, dir: 'C:\\Users\\Admin\\.jenkins\\workspace\\FlightCucumberProject\\target\\Destination'
             }
         }
     }
