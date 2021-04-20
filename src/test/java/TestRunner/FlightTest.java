@@ -1,3 +1,5 @@
+package TestRunner;
+
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 import org.junit.runner.RunWith;
@@ -11,8 +13,7 @@ import org.junit.runner.RunWith;
         plugin = { "pretty", "html:target/CucumberReport/cucumber.html",
                     "json:target/CucumberReport/cucumber.json",
                     "junit:target/CucumberReport/cucumber.xml",
-        },
-        monochrome = true
+        }
 )
 public class FlightTest {
 

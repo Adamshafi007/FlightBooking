@@ -3,6 +3,8 @@ package Pages;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class UserDetailsPage extends BaseFlight {
     @FindBy(id="inputName")
@@ -35,20 +37,17 @@ public class UserDetailsPage extends BaseFlight {
     @FindBy(xpath="//input[@type='submit']")
     WebElement purchaseFlight;
 
-    //here all able are initialized with driver, internally these webelements will be converted into driver.findElements
     public UserDetailsPage(){
         PageFactory.initElements(driver,this);
     }
-    //Actions
+
     public String validateWelcomePageTitle(){
         return driver.getTitle();
     }
-    public AllFlightsPage selectFromAndTo(){
-        //username.click();
-        return new AllFlightsPage();
-    }
 
     public void enterFirstName(String fName){
+        WebDriverWait wait = new WebDriverWait (driver, 15);
+        wait.until(ExpectedConditions.visibilityOf(firstName));
         firstName.sendKeys(fName);
     }
 

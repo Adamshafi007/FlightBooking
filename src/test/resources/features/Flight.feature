@@ -1,4 +1,4 @@
-Feature: This feature will validate flight booking
+Feature: This feature will validate flight booking functionality
 
   @Sanity
   Scenario Outline: Verify flight booking for users

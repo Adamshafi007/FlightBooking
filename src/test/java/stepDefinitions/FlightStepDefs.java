@@ -12,11 +12,8 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-
-import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -65,7 +62,6 @@ public class FlightStepDefs extends BaseFlight{
 
     @When("user selects {string} and {string} city")
     public void userFromAndToCity(String departure, String destination) {
-        System.out.println("depp=="+departure+"desss=="+destination);
         welcomePage.selectDepartureCity(departure);
         welcomePage.selectDestinationCity(destination);
     }
@@ -80,7 +76,7 @@ public class FlightStepDefs extends BaseFlight{
 
     @And("user enters all passenger details")
     public void userEntersAllPassengerDetailsAndClicksOnPurchaseFlightButton() {
-       // userDetailsPage.enterFirstName("Adamshafi");
+        userDetailsPage.enterFirstName("Adamshafi");
         userDetailsPage.enterAddress("123 street");
         userDetailsPage.enterCity("Bangalore");
         userDetailsPage.enterCCNumber("12345");
@@ -103,7 +99,6 @@ public class FlightStepDefs extends BaseFlight{
         String msg=flightConfirmationPage.getThankuMsg();
         String expectedMsg="Thank you for your purchase today!";
         Assert.assertTrue("Msg is valid",msg.equalsIgnoreCase(expectedMsg));
-
     }
 
     @Then("User validates {string} and {string} cities available")

@@ -21,13 +21,12 @@ public class WelcomePage extends BaseFlight{
     @FindBy(xpath="//*[contains(text(),'Flights from')]")
     WebElement flightHeaderMsg;
 
-//here all able are initialized with driver, internally these webelements will be converted into driver.findElements
     public WelcomePage(){
         PageFactory.initElements(driver,this);
     }
 
     Select dropdown;
-    //Actions
+
     public String validateWelcomePageTitle(){
         return driver.getTitle();
     }
@@ -36,7 +35,6 @@ public class WelcomePage extends BaseFlight{
         dropdown=new Select(departure);
         List<WebElement> options=dropdown.getOptions();
         dropdown.selectByVisibleText(fromCity);
-        //dropdown.selectByIndex(3);
     }
 
     public void selectDestinationCity(String toCity){
@@ -54,7 +52,6 @@ public class WelcomePage extends BaseFlight{
         for (WebElement option: options) {
             optionList.add(option.getText());
         }
-
         return optionList;
     }
 

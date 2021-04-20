@@ -14,11 +14,9 @@ public class FlightConfirmationPage extends BaseFlight {
     @FindBy(xpath="//h1[text()='Thank you for your purchase today!']")
     WebElement thankuMsg;
 
-    //here all able are initialized with driver, internally these webelements will be converted into driver.findElements
     public FlightConfirmationPage(){
         PageFactory.initElements(driver,this);
     }
-    //Actions
     public String validateWelcomePageTitle(){
         return driver.getTitle();
     }
