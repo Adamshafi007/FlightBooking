@@ -67,16 +67,16 @@ public class FlightStepDefs extends BaseFlight{
     }
     @And("click on Find Flights button")
     public void clickOnFindFlightsButton() {
-       // welcomePage.clickFindFlights();
+        welcomePage.clickFindFlights();
     }
     @And("user choose flight to reserve ticket")
     public void userChooseFlightToReserveTicket() {
-        //allFlightsPage.clickChooseThisFlightButton();
+        allFlightsPage.clickChooseThisFlightButton();
     }
 
     @And("user enters all passenger details")
     public void userEntersAllPassengerDetailsAndClicksOnPurchaseFlightButton() {
-        /*userDetailsPage.enterFirstName("Adamshafi");
+        userDetailsPage.enterFirstName("Adamshafi");
         userDetailsPage.enterAddress("123 street");
         userDetailsPage.enterCity("Bangalore");
         userDetailsPage.enterCCNumber("12345");
@@ -84,21 +84,22 @@ public class FlightStepDefs extends BaseFlight{
         userDetailsPage.enterCCYear("2021");
         userDetailsPage.enterZipCode("12344");
         userDetailsPage.enterNameOnCard("Shafi");
-        userDetailsPage.enterState("Karnataka");*/
+        userDetailsPage.enterState("Karnataka");
     }
 
     @And("clicks on Purchase Flight button")
     public void clicksOnPurchaseFlightButton() {
-       // userDetailsPage.clickPurchaseFlight();
+        userDetailsPage.clickPurchaseFlight();
     }
 
     @Then("user validates purchase details")
     public void userValidatesPurchaseDetails() {
-        /*String pid=flightConfirmationPage.getPurchaseID();
+        String pid=flightConfirmationPage.getPurchaseID();
         Assert.assertTrue("purchase ID generated= "+pid,pid!=null);
         String msg=flightConfirmationPage.getThankuMsg();
         String expectedMsg="Thank you for your purchase today!";
-        Assert.assertTrue("Msg is valid",msg.equalsIgnoreCase(expectedMsg));*/
+        Assert.assertTrue("Msg is valid",msg.equalsIgnoreCase(expectedMsg));
+
     }
 
     @Then("User validates {string} and {string} cities available")
@@ -124,8 +125,8 @@ public class FlightStepDefs extends BaseFlight{
 
     @Then("user validates flight header message {string} and {string} city")
     public void userValidatesFlightHeaderMessageAndCity(String departure, String destination) {
-        /*String msg=welcomePage.getFlightHeaderMsg();
+        String msg=welcomePage.getFlightHeaderMsg();
         Assert.assertTrue("valid msg is displayed",msg.contains(departure));
-        Assert.assertTrue("valid msg is displayed",msg.contains(destination));*/
+        Assert.assertTrue("valid msg is displayed",msg.contains(destination));
     }
 }
