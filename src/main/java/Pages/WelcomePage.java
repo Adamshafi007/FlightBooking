@@ -33,13 +33,13 @@ public class WelcomePage extends BaseFlight{
 
     public void selectDepartureCity(String fromCity){
         dropdown=new Select(departure);
-        List<WebElement> options=dropdown.getOptions();
+       // List<WebElement> options=dropdown.getOptions();
         dropdown.selectByVisibleText(fromCity);
     }
 
     public void selectDestinationCity(String toCity){
         dropdown=new Select(destination);
-        List<WebElement> options=dropdown.getOptions();
+        //List<WebElement> options=dropdown.getOptions();
         dropdown.selectByVisibleText(toCity);
     }
     public void clickFindFlights(){
