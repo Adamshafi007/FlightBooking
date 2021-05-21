@@ -54,17 +54,17 @@ pipeline {
         failure {
             emailext attachmentsPattern: 'report.zip', body: '''${SCRIPT, template="groovy-html.template"}''',
                     subject: "${env.JOB_NAME} - Build # ${env.BUILD_NUMBER} - Failed",
-                    mimeType: 'text/html',to: "sdmdwd1710@gmail.com"
+                    mimeType: 'text/html',to: "shafiadam1710@gmail.com"
         }
         success {
             emailext attachmentsPattern: 'report.zip', body: '''${SCRIPT, template="groovy-html.template"}''',
                     subject: "${env.JOB_NAME} - Build # ${env.BUILD_NUMBER} - Successful",
-                    mimeType: 'text/html',to: "sdmdwd1710@gmail.com"
+                    mimeType: 'text/html',to: "shafiadam1710@gmail.com"
         }
         unstable{
             emailext attachmentsPattern: 'report.zip', body: '''${SCRIPT, template="groovy-html.template"}''',
                     subject: "${env.JOB_NAME} - Build # ${env.BUILD_NUMBER} - Unstable",
-                    mimeType: 'text/html',to: "sdmdwd1710@gmail.com"
+                    mimeType: 'text/html',to: "shafiadam1710@gmail.com"
         }
     }
 }
