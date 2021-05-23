@@ -1,42 +1,37 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="5" time="36.267">
-<testcase classname="This feature will validate flight booking functionality" name="Verify flight booking for users" time="7.662">
-<system-out><![CDATA[Given User navigates to flight booking application..........................passed
+<testsuite errors="0" failures="2" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="2" time="23.302">
+<testcase classname="This feature will validate flight booking functionality" name="Verify flight booking for users" time="13.742">
+<failure message="Msg is valid" type="java.lang.AssertionError"><![CDATA[Given User navigates to flight booking application..........................passed
 When user selects "Paris" and "Rome" city...................................passed
 And click on Find Flights button............................................passed
 And user choose flight to reserve ticket....................................passed
 And user enters all passenger details.......................................passed
 And clicks on Purchase Flight button........................................passed
-Then user validates purchase details........................................passed
-]]></system-out>
+Then user validates purchase details........................................failed
+
+StackTrace:
+java.lang.AssertionError: Msg is valid
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.assertTrue(Assert.java:41)
+	at stepDefinitions.FlightStepDefs.userValidatesPurchaseDetails(FlightStepDefs.java:102)
+	at ✽.user validates purchase details(file:///C:/FlightProjectAutomation/FlightBooking/src/test/resources/features/Flight.feature:11)
+]]></failure>
 </testcase>
-<testcase classname="This feature will validate flight booking functionality" name="Verify flight booking for users 2" time="6.756">
-<system-out><![CDATA[Given User navigates to flight booking application..........................passed
+<testcase classname="This feature will validate flight booking functionality" name="Verify flight booking for users 2" time="8.73">
+<failure message="Msg is valid" type="java.lang.AssertionError"><![CDATA[Given User navigates to flight booking application..........................passed
 When user selects "Boston" and "Berlin" city................................passed
 And click on Find Flights button............................................passed
 And user choose flight to reserve ticket....................................passed
 And user enters all passenger details.......................................passed
 And clicks on Purchase Flight button........................................passed
-Then user validates purchase details........................................passed
-]]></system-out>
-</testcase>
-<testcase classname="This feature will validate flight booking functionality" name="Verify departure and destination dropdowns have all expected cities" time="7.492">
-<system-out><![CDATA[Given User navigates to flight booking application..........................passed
-Then User validates "Paris,Philadelphia,Boston,Portland,San Diego,Mexico City,São Paolo" and "Buenos Aires,Rome,London,Berlin,New York,Dublin,Cairo" cities available.passed
-]]></system-out>
-</testcase>
-<testcase classname="This feature will validate flight booking functionality" name="Verify flight header message is displayed in FLights page" time="6.813">
-<system-out><![CDATA[Given User navigates to flight booking application..........................passed
-When user selects "Paris" and "Rome" city...................................passed
-And user choose flight to reserve ticket....................................passed
-Then user validates flight header message "Paris" and "Rome" city...........passed
-]]></system-out>
-</testcase>
-<testcase classname="This feature will validate flight booking functionality" name="Verify flight header message is displayed in FLights page 2" time="7.133">
-<system-out><![CDATA[Given User navigates to flight booking application..........................passed
-When user selects "Boston" and "Berlin" city................................passed
-And user choose flight to reserve ticket....................................passed
-Then user validates flight header message "Boston" and "Berlin" city........passed
-]]></system-out>
+Then user validates purchase details........................................failed
+
+StackTrace:
+java.lang.AssertionError: Msg is valid
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.assertTrue(Assert.java:41)
+	at stepDefinitions.FlightStepDefs.userValidatesPurchaseDetails(FlightStepDefs.java:102)
+	at ✽.user validates purchase details(file:///C:/FlightProjectAutomation/FlightBooking/src/test/resources/features/Flight.feature:11)
+]]></failure>
 </testcase>
 </testsuite>

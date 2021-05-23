@@ -9,10 +9,10 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = "src/test/resources/features"
         ,glue={"stepDefinitions"},
-        tags="@Sanity",
+        tags="@test",
         plugin = { "pretty", "html:target/CucumberReport/cucumber.html",
-                    "json:target/CucumberReport/cucumber.json",
-                    "junit:target/CucumberReport/cucumber.xml",
+                "json:target/CucumberReport/cucumber.json",
+                "junit:target/CucumberReport/cucumber.xml",
         }
 )
 public class FlightTest {

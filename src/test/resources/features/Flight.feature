@@ -1,6 +1,6 @@
 Feature: This feature will validate flight booking functionality
 
-  @Sanity
+  @test
   Scenario Outline: Verify flight booking for users
     Given User navigates to flight booking application
     When user selects "<departure>" and "<destination>" city

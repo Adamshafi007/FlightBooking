@@ -21,6 +21,7 @@ public class FlightStepDefs extends BaseFlight{
     Scenario scenario;
     @Inject
     WelcomePage welcomePage;
+
     @Inject
     AllFlightsPage allFlightsPage;
     @Inject
@@ -97,7 +98,7 @@ public class FlightStepDefs extends BaseFlight{
         String pid=flightConfirmationPage.getPurchaseID();
         Assert.assertTrue("purchase ID generated= "+pid,pid!=null);
         String msg=flightConfirmationPage.getThankuMsg();
-        String expectedMsg="Thank you for your purchase today!";
+        String expectedMsg="Thankk you for your purchase today!";
         Assert.assertTrue("Msg is valid",msg.equalsIgnoreCase(expectedMsg));
 
     }
